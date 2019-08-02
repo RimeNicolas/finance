@@ -1,0 +1,27 @@
+*.log
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.toc
+*.o
+*.exe
+*.dat
+*.gz
+*.dat.in
+*.dat_residu
+*.avi
+*.dat_jq
+*.asv
+*.mat
+*.png
+*.eps
+*.Rhistory
+*.opendb
+*.suo
+Debug/
+x64/
+# Visual Studio 2015 cache/options directory
+.vs/
+Linking/
+Images/
