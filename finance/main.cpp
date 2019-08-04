@@ -1,11 +1,16 @@
-// finance.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
-
+#include "random1.h"
+#include "simpleMC1.h"
+#include "gaussNumerical.h"
+#include "analyticalFormulas.h"
 #include <iostream>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    double expiry(1.0), strike(50.0), spot(50.0), vol(0.1), r(0.01);
+	unsigned long nbPaths(1000000);
+	std::cout << simpleMC1(expiry, strike, spot, vol, r, nbPaths) << std::endl;
+	
+	std::cout << priceCall(expiry, strike, spot, vol, r, nbPaths) << std::endl;
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
