@@ -3,14 +3,27 @@
 #include "gaussNumerical.h"
 #include "analyticalFormulas.h"
 #include <iostream>
+#include <array>
+
+using namespace std;
 
 int main()
 {
-    double expiry(1.0), strike(50.0), spot(50.0), vol(0.1), r(0.01);
-	unsigned long nbPaths(1000000);
-	std::cout << simpleMC1(expiry, strike, spot, vol, r, nbPaths) << std::endl;
-	
-	std::cout << priceCall(expiry, strike, spot, vol, r, nbPaths) << std::endl;
+	const unsigned int N = 10;
+	array<double, N> v = {};
+	array<double, N> s = v;
+	for (size_t i = 0; i < v.size() - 1; i++)
+	{
+		v[i + 1] = getZBoxMuller();
+		s[i + 1] = s[i] + v[i+1];
+	}
+
+	for (auto it = v.begin(); it != v.end(); ++it)
+		cout << *it << endl;
+
+	for (auto it = s.begin(); it != s.end(); ++it)
+		cout << *it << endl;
+
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
