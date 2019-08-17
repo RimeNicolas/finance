@@ -151,8 +151,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="finance.cpp" />
     <ClCompile Include="randomGen.cpp" />
+=======
+    <ClCompile Include="analyticalFormulas.cpp" />
+    <ClCompile Include="gaussNumerical.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="random1.cpp" />
+    <ClCompile Include="randomGen.cpp" />
+    <ClCompile Include="simpleMC1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="analyticalFormulas.h" />
+    <ClInclude Include="gaussNumerical.h" />
+    <ClInclude Include="random1.h" />
+    <ClInclude Include="simpleMC1.h" />
+>>>>>>> a7c04cb5c93068593788205d90576bb6c81ec860
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

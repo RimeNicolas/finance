@@ -1,11 +1,29 @@
-// finance.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
-
+#include "random1.h"
+#include "simpleMC1.h"
+#include "gaussNumerical.h"
+#include "analyticalFormulas.h"
 #include <iostream>
+#include <array>
+
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	const unsigned int N = 10;
+	array<double, N> v = {};
+	array<double, N> s = v;
+	for (size_t i = 0; i < v.size() - 1; i++)
+	{
+		v[i + 1] = getZBoxMuller();
+		s[i + 1] = s[i] + v[i+1];
+	}
+
+	for (auto it = v.begin(); it != v.end(); ++it)
+		cout << *it << endl;
+
+	for (auto it = s.begin(); it != s.end(); ++it)
+		cout << *it << endl;
+
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
