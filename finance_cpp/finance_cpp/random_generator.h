@@ -3,8 +3,10 @@
 
 class RandomGenerator {
 public:
-	int randint(int min=0, int max=1);
+	RandomGenerator(unsigned int seed);
+	int randint();
 
 private:
-	int seed;
+	unsigned int seed;
+	unsigned int mod = 0x7fffffff;
 };
