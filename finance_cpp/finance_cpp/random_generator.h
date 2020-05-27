@@ -4,7 +4,7 @@
 //#include "math_func.h"
 
 template<typename T, size_t n> using Tensor1 = std::array<T, n>;
-template<typename T, size_t n> using Tensor2 = std::array<std::array<T, n>, n>;
+template<typename T, size_t n> using Tensor2 = Tensor1<std::array<T, n>, n>;
 
 template<typename T, size_t dim>
 Tensor2<T, dim> cholesky_factorisation(const Tensor2<T, dim> matrix);
@@ -20,10 +20,10 @@ public:
 
 protected:
 	unsigned int seed;
-	unsigned int mod;
+	const unsigned int mod;
 	double mod_inv;
-	unsigned int a;
-	unsigned int c;
+	const unsigned int a;
+	const unsigned int c;
 };
 
 class RandomGeneratorLewis : public RandomGenerator {
@@ -33,14 +33,14 @@ public:
 	std::pair<double, double> box_muller();
 	std::pair<double, double> box_muller_opt();
 
-	template<typename T, size_t dim>
-	std::array<T, dim> normal_array(std::array<T, dim> mu, Tensor2<T, dim> cov);
+	template<typename T, const size_t dim>
+	Tensor1<T, dim> normal_array(const Tensor1<T, dim> mu, const Tensor2<T, dim> cov);
 };
 
-template<typename T, size_t dim>
-inline std::array<T, dim> RandomGeneratorLewis::normal_array(std::array<T, dim> mu, Tensor2<T, dim> cov) {
+template<typename T, const size_t dim>
+inline Tensor1<T, dim> RandomGeneratorLewis::normal_array(const Tensor1<T, dim> mu, const Tensor2<T, dim> cov) {
 	Tensor2<T, dim> A = cholesky_factorisation(cov);
-	std::array<T, dim> random_array = mu;
+	Tensor1<T, dim> random_array = mu;
 	double z1(0);
 	std::pair<double, double> z = { 0,0 };
 	for (size_t i(0); i < dim; i++) {

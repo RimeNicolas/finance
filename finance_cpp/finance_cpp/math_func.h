@@ -1,7 +1,7 @@
 #include<array>
 
-template<typename T, size_t dim>
-Tensor2<T, dim> cholesky_factorisation(const Tensor2<T, dim> matrix) {
+template<typename T, const size_t dim>
+Tensor2<T, dim> cholesky_factorisation(const Tensor2<T, dim>& matrix) {
 	std::array<std::array<double, dim>, dim> result = { {0} };
 	for (size_t i = 0; i < dim; ++i) {
 		for (size_t k = 0; k < i; ++k) {

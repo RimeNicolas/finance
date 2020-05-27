@@ -6,8 +6,8 @@ class RandomGeneratorLewis;
 template<typename T, const size_t n>
 class BrownianMotion {
 public:
-	BrownianMotion(T final_time);
-	std::array<T, n> standard_motion(T mu, T sigma);
+	BrownianMotion(const T final_time);
+	Tensor1<T, n> standard_motion(const T mu, const T sigma);
 
 private:
 	T final_time;
@@ -18,7 +18,7 @@ private:
 };
 
 template<typename T, const size_t n>
-inline BrownianMotion<T, n>::BrownianMotion(T final_time)
+inline BrownianMotion<T, n>::BrownianMotion(const T final_time)
 	: final_time(final_time), n_steps(n), rgl(0) {
 	this->delta_t = this->final_time / (this->n_steps - 1);
 	std::cout << "delta t = " << delta_t << std::endl;
@@ -26,8 +26,8 @@ inline BrownianMotion<T, n>::BrownianMotion(T final_time)
 }
 
 template<typename T, const size_t n>
-std::array<T, n> inline BrownianMotion<T, n>::standard_motion(T mu, T sigma) {
-	std::array<T, n> v = { 0 };
+Tensor1<T, n> inline BrownianMotion<T, n>::standard_motion(const T mu, const T sigma) {
+	Tensor1<T, n> v = { 0 };
 	std::pair<T, T> z_pair = { 0,0 };
 	T z(0);
 	for (size_t i(1); i < v.size(); i++) {
