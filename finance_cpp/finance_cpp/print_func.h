@@ -1,0 +1,30 @@
+
+
+
+template<typename T, typename U>
+void print_pair(std::pair<T, U> p) {
+	std::cout << p.first << ", " << p.second << std::endl;
+}
+
+template<typename T>
+void print_array(T a[], size_t size) {
+	if (size == 0)
+		return;
+	std::cout << '(';
+	for (size_t i(0); i < size-1; i++) {
+		std::cout << a[i] << ", ";
+	}
+	std::cout << a[size-1] << ')' << std::endl;
+}
+
+template<typename T, size_t size>
+void print_array(std::array<T, size> a) {
+	print_array(a.data(), a.size());
+}
+
+template<typename T, size_t size>
+void print_array(std::array<std::array<T, size>, size> a) {
+	for (const auto& el : a) {
+		print_array(el.data(), el.size());
+	}
+}
