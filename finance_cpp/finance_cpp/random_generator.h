@@ -3,13 +3,14 @@
 #include <array>
 //#include "math_func.h"
 
-template<typename T, size_t n> using Tensor1 = std::array<T, n>;
-template<typename T, size_t n> using Tensor2 = Tensor1<std::array<T, n>, n>;
+template<typename T, const size_t n> using Tensor1 = std::array<T, n>;
+template<typename T, const size_t n> using Tensor2 = Tensor1<std::array<T, n>, n>;
+template<typename T, const size_t n, const size_t d> using Tensor2d = Tensor1<std::array<T, d>, n>;
 
-template<typename T, size_t dim>
-Tensor2<T, dim> cholesky_factorisation(const Tensor2<T, dim> matrix);
+//template<typename T, size_t dim>
+//Tensor2<T, dim> cholesky_factorisation(const Tensor2<T, dim> matrix);
 
-constexpr double pi = 3.14159265358979323846;
+constexpr double m_pi = 3.14159265358979323846;
 
 class RandomGenerator {
 public:
@@ -34,12 +35,12 @@ public:
 	std::pair<double, double> box_muller_opt();
 
 	template<typename T, const size_t dim>
-	Tensor1<T, dim> normal_array(const Tensor1<T, dim> mu, const Tensor2<T, dim> cov);
+	Tensor1<T, dim> gauss_array(const Tensor1<T, dim> mu, const Tensor2<T, dim> cov);
 };
 
 template<typename T, const size_t dim>
-inline Tensor1<T, dim> RandomGeneratorLewis::normal_array(const Tensor1<T, dim> mu, const Tensor2<T, dim> cov) {
-	Tensor2<T, dim> A = cholesky_factorisation(cov);
+inline Tensor1<T, dim> RandomGeneratorLewis::gauss_array(const Tensor1<T, dim> mu, const Tensor2<T, dim> cov) {
+	Tensor2<T, dim> A = cholesky_factorisation<T, dim>(cov);
 	Tensor1<T, dim> random_array = mu;
 	double z1(0);
 	std::pair<double, double> z = { 0,0 };

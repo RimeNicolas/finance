@@ -25,7 +25,7 @@ double RandomGeneratorLewis::random_exponential(const double theta) {
 
 std::pair<double, double> RandomGeneratorLewis::box_muller() {
 	const double r = -2 * std::log(randuniform01());
-	const double v = 2 * pi * randuniform01();
+	const double v = 2 * m_pi * randuniform01();
 	return std::pair<double, double>(std::sqrt(r)*std::cos(v), std::sqrt(r)*std::sin(v));
 }
 
