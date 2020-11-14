@@ -25,10 +25,11 @@ x64/
 .vs/
 Linking/
 Images/
-*/.venv_finance
-*/.vscode
+.venv_finance/
+.vscode/
 */out/*
 */__pycache__
 */out/*
 */__pycache__
 .ipy*
+*.code*
