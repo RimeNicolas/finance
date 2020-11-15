@@ -28,8 +28,6 @@ Images/
 .venv_finance/
 .vscode/
 */out/*
-*/__pycache__
-*/out/*
-*/__pycache__
+__pycache__
 .ipy*
 *.code*
